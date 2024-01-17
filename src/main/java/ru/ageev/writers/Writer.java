@@ -1,32 +1,31 @@
 package ru.ageev.writers;
 
 
+import ru.ageev.models.Options;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
 class Writer<E> {
-    protected List<E> list;
-    protected String prefix = "";
     protected String FILE_NAME;
-    protected String path;
-    protected boolean append;
+    protected Options options;
 
-    public Writer(List<E> list, String path, boolean append) {
-        this.list = list;
-        this.path = path;
-        this.append = append;
+    public Writer(Options options) {
+        this.options = options;
     }
 
-    public void writeListToFile() {
+    public void writeListToFile(List<E> list) {
+        String fullPath = options.getPath() + "/" + options.getPrefix() + FILE_NAME;
+
         if (list != null && !list.isEmpty()) {
-            try (FileWriter fileWriter = new FileWriter(path + "/" + prefix + FILE_NAME, append)) {
+            try (FileWriter fileWriter = new FileWriter(fullPath, options.isAppendMode())) {
                 for (E element : list) {
                     fileWriter.write(element.toString());
                     fileWriter.write(System.lineSeparator());
                 }
             } catch (IOException e) {
-                throw new RuntimeException("Ошибка при записи в файл " + FILE_NAME);
+                throw new RuntimeException("Невозможно записать файл по указанному пути: " + fullPath);
             }
         }
     }

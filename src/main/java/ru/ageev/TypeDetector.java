@@ -5,21 +5,12 @@ import java.util.List;
 
 public class TypeDetector {
     private List<String> lines;
-    private Result result = new Result();
     private List<Integer> integers = new ArrayList<>();
     private List<String> strings = new ArrayList<>();
     private List<Float> floats = new ArrayList<>();
 
     public TypeDetector(List<String> lines) {
         this.lines = lines;
-    }
-
-    public Result getResult() {
-        result.setIntegers(integers);
-        result.setFloats(floats);
-        result.setStrings(strings);
-
-        return result;
     }
 
     public List<Integer> getIntegers() {
@@ -44,8 +35,6 @@ public class TypeDetector {
                 strings.add(line);
             }
         }
-
-
     }
 
     private boolean isInteger(String line) {

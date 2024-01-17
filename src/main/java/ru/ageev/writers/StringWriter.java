@@ -1,15 +1,17 @@
 package ru.ageev.writers;
 
+import ru.ageev.models.Options;
+
 import java.util.List;
 
 public class StringWriter extends Writer<String> {
-    public StringWriter(List<String> list, String path, boolean append) {
-        super(list, path, append);
+    public StringWriter(Options options) {
+        super(options);
         FILE_NAME = "strings.txt";
     }
 
     @Override
-    public void writeListToFile() {
-        super.writeListToFile();
+    public void writeListToFile(List<String> list) {
+        super.writeListToFile(list);
     }
 }
