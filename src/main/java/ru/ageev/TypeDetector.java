@@ -4,23 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TypeDetector {
-    private List<String> lines;
-    private List<Integer> integers = new ArrayList<>();
-    private List<String> strings = new ArrayList<>();
-    private List<Float> floats = new ArrayList<>();
+    private final List<String> lines;
+    private final List<Integer> integers = new ArrayList<>();
+    private final List<String> strings = new ArrayList<>();
+    private final List<Float> floats = new ArrayList<>();
 
     public TypeDetector(List<String> lines) {
         this.lines = lines;
     }
-
     public List<Integer> getIntegers() {
         return integers;
     }
-
     public List<String> getStrings() {
         return strings;
     }
-
     public List<Float> getFloats() {
         return floats;
     }

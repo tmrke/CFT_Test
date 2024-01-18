@@ -4,9 +4,9 @@ import ru.ageev.Reader;
 import ru.ageev.TypeDetector;
 import ru.ageev.models.Options;
 import ru.ageev.statistics.Statistic;
-import ru.ageev.statistics.full_statistic.FullStatisticFloat;
-import ru.ageev.statistics.full_statistic.FullStatisticInteger;
+import ru.ageev.statistics.full_statistic.FullStatisticNumber;
 import ru.ageev.statistics.full_statistic.FullStatisticString;
+import ru.ageev.statistics.small_statistic.SmallStatistic;
 import ru.ageev.writers.FloatWriter;
 import ru.ageev.writers.IntegerWriter;
 import ru.ageev.writers.StringWriter;
@@ -28,7 +28,6 @@ public class ProgramManager {
         FloatWriter floatWriter = new FloatWriter(options);
         StringWriter stringWriter = new StringWriter(options);
 
-
         for (int i = 0; i < filesNames.length; i++) {
             List<String> lines = reader.getFileLines(options.getFileNames()[i]);
 
@@ -43,18 +42,27 @@ public class ProgramManager {
             floatWriter.writeListToFile(floats);
             stringWriter.writeListToFile(strings);
 
-            calculateIntegerStatistic(integers, floats, strings);
+            calculateIntegerStatistic(options, integers, floats, strings);
         }
     }
 
-    public void calculateIntegerStatistic(List<Integer> integers, List<Float> floats, List<String> strings) {
-        Statistic integerStatistic = new FullStatisticInteger(integers);
-        integerStatistic.printStatistic();
+    public void calculateIntegerStatistic(Options options, List<Integer> integers, List<Float> floats, List<String> strings) {
+        Statistic integerStatistic;
+        Statistic floatStatistic;
+        Statistic stringStatistic;
 
-        Statistic floatStatistic = new FullStatisticFloat(floats);
+        if (options.isFullStatistic()) {
+            integerStatistic = new FullStatisticNumber<>(integers);
+            floatStatistic = new FullStatisticNumber<>(floats);
+            stringStatistic = new FullStatisticString(strings);
+        } else {
+            integerStatistic = new SmallStatistic<>(integers);
+            floatStatistic = new SmallStatistic<>(floats);
+            stringStatistic = new SmallStatistic<>(strings);
+        }
+
         floatStatistic.printStatistic();
-
-        Statistic stringStatistic = new FullStatisticString(strings);
+        integerStatistic.printStatistic();
         stringStatistic.printStatistic();
     }
 }

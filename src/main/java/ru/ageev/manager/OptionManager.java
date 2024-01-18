@@ -29,7 +29,6 @@ public class OptionManager {
                 case (SMALL_STATISTIC_OPTION) -> {
                     options.setFullStatistic(false);
                     argumentCount++;
-
                 }
 
                 case (APPEND_MODE_OPTION) -> {

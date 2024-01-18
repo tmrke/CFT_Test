@@ -2,10 +2,10 @@ package ru.ageev.models;
 
 public class Options {
     private static final String DEFAULT_PATH = "src/main/resources/input";
-    private boolean isFullStatistic;        // -s / -f
-    private boolean appendMode;             // -a
-    private String prefix = "";             // -p
-    private String path = DEFAULT_PATH;     // -o
+    private boolean isFullStatistic;
+    private boolean appendMode;
+    private String prefix = "";
+    private String path = DEFAULT_PATH;
     private String[] fileNames;
 
     public boolean isFullStatistic() {
