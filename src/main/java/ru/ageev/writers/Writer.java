@@ -2,6 +2,7 @@ package ru.ageev.writers;
 
 
 import ru.ageev.models.Options;
+import ru.ageev.statistics.Statistic;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -10,6 +11,7 @@ import java.util.List;
 class Writer<E> {
     protected String FILE_NAME;
     protected Options options;
+    protected Statistic statistic;
 
     public Writer(Options options) {
         this.options = options;
