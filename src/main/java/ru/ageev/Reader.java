@@ -33,7 +33,8 @@ public class Reader {
 
             return lines;
         } catch (IOException e) {
-            throw new RuntimeException(("По указанному пути файлы не найдены. Path - " + path));
+            throw new RuntimeException(("По указанному пути файлы не найдены. Path - " + path
+                    + "Либо некорректное имя файла: " + fileName));
         }
     }
 }
