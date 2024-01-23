@@ -20,6 +20,7 @@ public class OptionManager {
         for (int i = 0; i < args.length; i++) {
             String currentArgument = args[i];
 
+
             switch (currentArgument) {
                 case (FULL_STATISTIC_OPTION) -> {
                     options.setFullStatistic(true);
@@ -48,7 +49,7 @@ public class OptionManager {
             }
         }
 
-        List<String> filesNames = new ArrayList<>(Arrays.asList(args).subList(argumentCount, args.length));
+        List<String> filesNames = new ArrayList<>(Arrays.asList(args).subList(argumentCount + 1, args.length));
         options.setFileNames(filesNames.toArray(new String[0]));
 
         return options;

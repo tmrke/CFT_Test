@@ -7,7 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-class Writer<E> {
+abstract class Writer<E> {
     protected String FILE_NAME;
     protected Options options;
 

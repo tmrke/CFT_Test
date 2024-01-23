@@ -1,11 +1,11 @@
-package ru.ageev;
+package ru.ageev.readers;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Reader {
-    private static final String DEFAULT_PATH = "src/main/resources/input/";
+    private static final String DEFAULT_PATH = "src/main/resources/input";
     private final String path;
 
     public Reader(String path) {
@@ -34,7 +34,7 @@ public class Reader {
             return lines;
         } catch (IOException e) {
             throw new RuntimeException(("По указанному пути файлы не найдены. Path - " + path
-                    + "Либо некорректное имя файла: " + fileName));
+                    + ". Либо некорректное имя файла: " + fileName));
         }
     }
 }

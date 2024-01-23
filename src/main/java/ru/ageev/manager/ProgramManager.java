@@ -1,7 +1,7 @@
 package ru.ageev.manager;
 
-import ru.ageev.Reader;
-import ru.ageev.TypeDetector;
+import ru.ageev.readers.Reader;
+import ru.ageev.utils.TypeDetector;
 import ru.ageev.models.Options;
 import ru.ageev.statistics.Statistic;
 import ru.ageev.statistics.full_statistic.FullStatisticNumber;

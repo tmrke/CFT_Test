@@ -8,7 +8,7 @@ public class Main {
         String[] arguments = new String[]{"-o", "G:\\programming\\projects\\CFT_Test\\src\\main\\resources\\output", "f", "-a", "-p", "sample-", "in1.txt"};
 
         ProgramManager programManager = new ProgramManager();
-        programManager.startProgram(arguments);
+        programManager.startProgram(args);
     }
 
     //TODO решить проблему со всемозможными некорректными аргументами.
