@@ -7,20 +7,11 @@ import java.util.List;
 public class Reader {
     private static final String DEFAULT_PATH = "src/main/resources/input";
     private final String path;
-
-    public Reader(String path) {
-        if (path == null || path.equals("")) {
-            this.path = DEFAULT_PATH;
-        } else {
-            this.path = path;
-        }
-    }
-
     public Reader() {
         path = DEFAULT_PATH;
     }
 
-    public List<String> getFileLines(String fileName) {
+    public List<String> getFileLines(String fileName) throws IOException {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path + "/" + fileName))) {
             List<String> lines = new ArrayList<>();
             String line;
@@ -32,9 +23,6 @@ public class Reader {
             }
 
             return lines;
-        } catch (IOException e) {
-            throw new RuntimeException(("По указанному пути файлы не найдены. Path - " + path
-                    + ". Либо некорректное имя файла: " + fileName));
         }
     }
 }

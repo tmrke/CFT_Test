@@ -11,6 +11,7 @@ import ru.ageev.writers.FloatWriter;
 import ru.ageev.writers.IntegerWriter;
 import ru.ageev.writers.StringWriter;
 
+import java.io.IOException;
 import java.util.List;
 
 public class ProgramManager {
@@ -29,20 +30,25 @@ public class ProgramManager {
         StringWriter stringWriter = new StringWriter(options);
 
         for (int i = 0; i < filesNames.length; i++) {
-            List<String> lines = reader.getFileLines(options.getFileNames()[i]);
+            try {
+                List<String> lines = reader.getFileLines(options.getFileNames()[i]);
 
-            TypeDetector typeDetector = new TypeDetector(lines);
-            typeDetector.detect();
+                TypeDetector typeDetector = new TypeDetector(lines);
+                typeDetector.detect();
 
-            List<Integer> integers = typeDetector.getIntegers();
-            List<Float> floats = typeDetector.getFloats();
-            List<String> strings = typeDetector.getStrings();
+                List<Integer> integers = typeDetector.getIntegers();
+                List<Float> floats = typeDetector.getFloats();
+                List<String> strings = typeDetector.getStrings();
 
-            integerWriter.writeListToFile(integers);
-            floatWriter.writeListToFile(floats);
-            stringWriter.writeListToFile(strings);
+                integerWriter.writeListToFile(integers);
+                floatWriter.writeListToFile(floats);
+                stringWriter.writeListToFile(strings);
 
-            calculateIntegerStatistic(options, integers, floats, strings);
+                calculateIntegerStatistic(options, integers, floats, strings);
+            } catch (IOException e) {
+                System.out.println((("По указанному пути файлы не найдены. Path - " + options.getPath()
+                        + ". Либо некорректное имя файла: " + options.getFileNames()[i])));
+            }
         }
     }
 

@@ -16,7 +16,7 @@ abstract class Writer<E> {
     }
 
     public void writeListToFile(List<E> list) {
-        String fullPath = options.getPath() + "/" + options.getPrefix() + FILE_NAME;
+        String fullPath = options.getPath() + "\\" + options.getPrefix() + FILE_NAME;
 
         if (list != null && !list.isEmpty()) {
             try (FileWriter fileWriter = new FileWriter(fullPath, options.isAppendMode())) {
