@@ -15,6 +15,12 @@ import java.io.IOException;
 import java.util.List;
 
 public class ProgramManager {
+
+    /**
+     * Запускает программу, на вход которой, падаются {@code args}
+     *
+     * @param args массив строк, который содержит аргументы программы
+     */
     public void startProgram(String[] args) {
         Options options = OptionManager.getOptions(args);
         Reader reader = new Reader();
@@ -44,7 +50,7 @@ public class ProgramManager {
                 floatWriter.writeListToFile(floats);
                 stringWriter.writeListToFile(strings);
 
-                calculateIntegerStatistic(options, integers, floats, strings);
+                calculateStatistic(options, integers, floats, strings);
             } catch (IOException e) {
                 System.out.println((("По указанному пути файлы не найдены. Path - " + options.getPath()
                         + ". Либо некорректное имя файла: " + options.getFileNames()[i])));
@@ -52,7 +58,15 @@ public class ProgramManager {
         }
     }
 
-    public void calculateIntegerStatistic(Options options, List<Integer> integers, List<Float> floats, List<String> strings) {
+    /**
+     * Собирает статистику по каждому типу данных исходя из переданных {@code options}
+     *
+     * @param options опции программы
+     * @param integers список целочисленных значений
+     * @param floats список значений с плавающей запятой
+     * @param strings список строк
+     */
+    public void calculateStatistic(Options options, List<Integer> integers, List<Float> floats, List<String> strings) {
         Statistic integerStatistic;
         Statistic floatStatistic;
         Statistic stringStatistic;

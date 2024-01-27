@@ -15,6 +15,11 @@ abstract class Writer<E> {
         this.options = options;
     }
 
+    /**
+     * Записывает список данных в файл с названием {@code FILE_NAME}
+     *
+     * @param list список данных подлежащих записи в файл
+     */
     public void writeListToFile(List<E> list) {
         String fullPath = options.getPath() + "\\" + options.getPrefix() + FILE_NAME;
 

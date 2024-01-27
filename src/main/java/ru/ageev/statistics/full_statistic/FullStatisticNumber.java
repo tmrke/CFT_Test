@@ -38,6 +38,11 @@ public class FullStatisticNumber<E extends Number> extends SmallStatistic<E> imp
     }
 
 
+    /**
+     * Вычисляет статистику по переданным данным
+     *
+     * @param list список числовых значений, подлежащих вычислению статистики
+     */
     private void calculateStatistic(List<E> list) {
         if (!list.isEmpty()) {
             minValue = list.stream().mapToDouble(Number::doubleValue).min().orElse(0);

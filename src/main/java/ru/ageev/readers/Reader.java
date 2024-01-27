@@ -11,6 +11,12 @@ public class Reader {
         path = DEFAULT_PATH;
     }
 
+    /**
+     * Читает построчно файл с именем {@code fileName} и каждую строку записывает в список строковых значений
+     *
+     * @param fileName имя файла для чтения
+     * @return список строковых значений с прочитанными строками файла
+     */
     public List<String> getFileLines(String fileName) throws IOException {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path + "/" + fileName))) {
             List<String> lines = new ArrayList<>();

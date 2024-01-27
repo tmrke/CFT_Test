@@ -13,6 +13,12 @@ public class OptionManager {
     private static final String PREFIX_OPTION = "-p";
     private static final String OUTPUT_PATH_OPTION = "-o";
 
+    /**
+     * Получает на вход массив строк, по которым определяет опции программы, путь и список имен файлов
+     *
+     * @param args массив строк с аргументами программы
+     * @return объект типа Options, который содержит аргументы программы
+     */
     public static Options getOptions(String[] args) {
         Options options = new Options();
         int argumentCount = 0;

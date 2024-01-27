@@ -13,6 +13,7 @@ public class SmallStatistic<E> implements Statistic {
         elementsCount = list.size();
     }
 
+
     @Override
     public void printStatistic() {
         if (!list.isEmpty()) {

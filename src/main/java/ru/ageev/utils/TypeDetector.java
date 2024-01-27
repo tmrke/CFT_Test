@@ -22,6 +22,10 @@ public class TypeDetector {
         return floats;
     }
 
+    /**
+     * Проверяет каждый элемент списка строк {@code lines} на то является ли это значение Integer, Float или String
+     * и записывает его в соотвествующих типу данных список
+     */
     public void detect() {
         for (String line : lines) {
             if (isInteger(line)) {
@@ -34,6 +38,11 @@ public class TypeDetector {
         }
     }
 
+    /**
+     * Проверяет, является ли {@code line} Integer
+     * @param line строка подлежащая проверке
+     * @return true, если {@code line} является объектом типа Integer
+     */
     private boolean isInteger(String line) {
         try {
             Integer.valueOf(line);
@@ -44,6 +53,11 @@ public class TypeDetector {
         }
     }
 
+    /**
+     * Проверяет, является ли {@code line} Float
+     * @param line строка подлежащая проверке
+     * @return true, если {@code line} является объектом типа Float
+     */
     private boolean isFloat(String line) {
         try {
             Float.valueOf(line);
